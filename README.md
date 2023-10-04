@@ -38,7 +38,7 @@ const plugins = [
     options: {
       api_key: process.env.OPENAI_API_KEY,
       enableUI: true,
-    },
+    }
   }
 ]
 ```
