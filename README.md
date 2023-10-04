@@ -39,7 +39,8 @@ const plugins = [
       api_key: process.env.OPENAI_API_KEY,
       enableUI: true,
     },
-  },
+  }
+]
 ```
 
 3. In your `.env` file, add a `OPENAI_API_KEY` environment variable containing your API key:
