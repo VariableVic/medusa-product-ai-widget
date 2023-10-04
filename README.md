@@ -20,6 +20,8 @@
   </a>
 </p>
 
+https://github.com/VariableVic/medusa-product-ai-widget/assets/42065266/bc5c51ef-83bc-42e3-a698-7bd71988e0ed
+
 ## Prerequisites
 
 1. This plugin requires an OpenAI API key and platform account. Go to https://platform.openai.com/account/api-keys to set this up.
