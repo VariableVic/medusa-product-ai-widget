@@ -28,7 +28,7 @@
 ## Getting Started
 
 1. Install the package with `yarn add medusa-product-ai-widget` or `npm i medusa-product-ai-widget`
-2. In `medusa-config.js`, add the plugin to the `plugins` array:
+2. In `medusa-config.js`, add the plugin to the `plugins` array with the following options:
 
 ```js
 const plugins = [
