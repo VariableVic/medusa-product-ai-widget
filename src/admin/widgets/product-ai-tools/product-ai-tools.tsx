@@ -32,7 +32,6 @@ const ProductAIToolsWidget = ({
   product,
   notify,
 }: ProductDetailsWidgetProps) => {
-  // Keep track of which button was clicked for loading state
   const [clickedButton, setClickedButton] = useState("");
   const [newDescription, setNewDescription] = useState("");
 

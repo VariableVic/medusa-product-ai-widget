@@ -8,11 +8,11 @@
   </a>
 </p>
 <h1 align="center">
-  Medusa  
+  Medusa Product AI Widget
 </h1>
 
 <p align="center">
-  Building blocks for digital commerce
+  An admin widget to improve product descriptions with AI.
 </p>
 <p align="center">
   <a href="https://twitter.com/intent/follow?screen_name=VariableVic">
@@ -20,39 +20,32 @@
   </a>
 </p>
 
-## Compatibility
+## Prerequisites
 
-This starter is compatible with versions >= 1.8.0 of `@medusajs/medusa`.
+1. This plugin requires an OpenAI API key and platform account. Go to https://platform.openai.com/account/api-keys to set this up.
+2. You need a Medusa server with the Admin installed. The fastest way to set this up is up is by using [create-medusa-app](https://docs.medusajs.com/create-medusa-app)
 
 ## Getting Started
 
-Visit the [Quickstart Guide](https://docs.medusajs.com/create-medusa-app) to set up a server.
+1. Install the package with `yarn add medusa-product-ai-widget` or `npm i medusa-product-ai-widget`
+2. In `medusa-config.js`, add the plugin to the `plugins` array:
 
-Visit the [Docs](https://docs.medusajs.com/development/backend/prepare-environment) to learn more about our system requirements.
+```js
+const plugins = [
+  // ... other plugins
+  {
+    resolve: `medusa-product-ai-widget`,
+    options: {
+      api_key: process.env.OPENAI_API_KEY,
+      enableUI: true,
+    },
+  },
+```
 
-## What is Medusa
+3. In your `.env` file, add a `OPENAI_API_KEY` environment variable containing your API key:
 
-Medusa is a set of commerce modules and tools that allow you to build rich, reliable, and performant commerce applications without reinventing core commerce logic. The modules can be customized and used to build advanced ecommerce stores, marketplaces, or any product that needs foundational commerce primitives. All modules are open-source and freely available on npm.
+```
+OPENAI_API_KEY=<YOUR OPENAI API KEY>
+```
 
-Learn more about [Medusa’s architecture](https://docs.medusajs.com/development/fundamentals/architecture-overview) and [commerce modules](https://docs.medusajs.com/modules/overview) in the Docs.
-
-## Roadmap, Upgrades & Plugins
-
-You can view the planned, started and completed features in the [Roadmap discussion](https://github.com/medusajs/medusa/discussions/categories/roadmap).
-
-Follow the [Upgrade Guides](https://docs.medusajs.com/upgrade-guides/) to keep your Medusa project up-to-date.
-
-Check out all [available Medusa plugins](https://medusajs.com/plugins/).
-
-## Community & Contributions
-
-The community and core team are available in [GitHub Discussions](https://github.com/medusajs/medusa/discussions), where you can ask for support, discuss roadmap, and share ideas.
-
-Join our [Discord server](https://discord.com/invite/medusajs) to meet other community members.
-
-## Other channels
-
-- [GitHub Issues](https://github.com/medusajs/medusa/issues)
-- [Twitter](https://twitter.com/medusajs)
-- [LinkedIn](https://www.linkedin.com/company/medusajs)
-- [Medusa Blog](https://medusajs.com/blog/)
+4. Start your dev server and log into the admin. Open any product that has a product description and the widget will appear on the bottom of the page!
