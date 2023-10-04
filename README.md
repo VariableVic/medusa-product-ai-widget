@@ -25,7 +25,7 @@ https://github.com/VariableVic/medusa-product-ai-widget/assets/42065266/bc5c51ef
 ## Prerequisites
 
 1. This plugin requires an OpenAI API key and platform account. Go to https://platform.openai.com/account/api-keys to set this up.
-2. You need a Medusa server with the Admin installed. The fastest way to set this up is up is by using [create-medusa-app](https://docs.medusajs.com/create-medusa-app)
+2. You need a Medusa server with the Admin installed. The fastest way to set this up is up is by using [create-medusa-app](https://docs.medusajs.com/create-medusa-app).
 
 ## Getting Started
 
@@ -39,13 +39,13 @@ const plugins = [
     resolve: `medusa-product-ai-widget`,
     options: {
       api_key: process.env.OPENAI_API_KEY,
-      enableUI: true,
+      enableUI: true
     }
   }
 ]
 ```
 
-3. In your `.env` file, add a `OPENAI_API_KEY` environment variable containing your API key:
+3. In your `.env` file, add an `OPENAI_API_KEY` environment variable containing your API key:
 
 ```
 OPENAI_API_KEY=<YOUR OPENAI API KEY>
