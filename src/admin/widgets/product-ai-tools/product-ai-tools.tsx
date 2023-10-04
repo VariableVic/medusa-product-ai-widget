@@ -1,7 +1,7 @@
 import type { WidgetConfig, ProductDetailsWidgetProps } from "@medusajs/admin";
 import { useAdminUpdateProduct } from "medusa-react";
-import { Button, Container, Text, Tooltip } from "@medusajs/ui";
-import { useState } from "react";
+import { Button, Container, Text, Textarea, Tooltip } from "@medusajs/ui";
+import { useEffect, useRef, useState } from "react";
 import { Message, useChat } from "ai/react";
 import { CheckMini } from "@medusajs/icons";
 import { Prompts } from "../../../types/product-ai-tools";
@@ -12,6 +12,7 @@ type PromptButtonProps = {
   button_text: string;
   tooltip?: string;
   isLoading?: boolean;
+  disabled?: boolean;
 };
 
 const backendUrl =
@@ -33,6 +34,7 @@ const ProductAIToolsWidget = ({
 }: ProductDetailsWidgetProps) => {
   // Keep track of which button was clicked for loading state
   const [clickedButton, setClickedButton] = useState("");
+  const [newDescription, setNewDescription] = useState("");
 
   // Hook to update product description
   const { mutateAsync, isLoading: productLoading } = useAdminUpdateProduct(
@@ -78,13 +80,33 @@ const ProductAIToolsWidget = ({
     });
   };
 
+  // Ref to the text area
+  const textRef = useRef<HTMLTextAreaElement>();
+
   // Get the response content from the AI
-  const response = messages.find((m) => m.role === "assistant")?.content;
+  useEffect(() => {
+    if (!messages) return;
+    setNewDescription(messages.find((m) => m.role === "assistant")?.content);
+    if (!textRef.current) return;
+    setHeight();
+  }, messages);
+
+  // Update the text area height when the description changes
+  const handleChange = (e) => {
+    setNewDescription(e.target.value);
+    setHeight();
+  };
+
+  // Set the height of the text area to match the content
+  const setHeight = () => {
+    textRef.current.style.height = "auto"; // Reset the height to auto
+    textRef.current.style.height = `${textRef.current.scrollHeight + 3}px`; // Set the height to match the content
+  };
 
   // Update product description
   const updateProduct = async () => {
     await mutateAsync({
-      description: response,
+      description: newDescription,
     })
       .then(() => {
         reset();
@@ -100,10 +122,11 @@ const ProductAIToolsWidget = ({
     setMessages(messages.filter((m) => m.role !== "assistant"));
   };
 
+  // If there is no description, don't render the widget
   if (!product.description) return null;
 
   return (
-    <Container className="p-8 flex flex-col gap-y-4 transition-transform">
+    <Container className="p-8 flex flex-col gap-y-4">
       <h1 className="text-grey-90 inter-xlarge-semibold">
         Product Description AI Tools
       </h1>
@@ -122,18 +145,22 @@ const ProductAIToolsWidget = ({
             getCompletion={getCompletion}
             button_text={prompts[type]}
             isLoading={isLoading && clickedButton === type}
+            disabled={isLoading && !(clickedButton === type)}
             tooltip={
               type === "improve_seo" ? `Keyword: ${product.title}` : null
             }
           />
         ))}
       </div>
-      {response && (
+      {newDescription && (
         <div className="flex flex-col gap-y-4">
           <Text className="font-semibold">Optimized description:</Text>
-          <Container className="bg-gray-50 p-4 whitespace-pre-wrap">
-            {response}
-          </Container>
+          <Textarea
+            className="bg-gray-50 p-4 whitespace-pre-wrap resize-none h-auto overflow-hidden"
+            onChange={handleChange}
+            ref={textRef}
+            value={newDescription}
+          />
           <div className="flex flex-row gap-3 self-end">
             <Button disabled={isLoading} onClick={reset} variant="secondary">
               Cancel
@@ -154,12 +181,14 @@ const ProductAIToolsWidget = ({
   );
 };
 
+// Prompt button component
 const PromptButton = ({
   type,
   getCompletion,
   button_text,
   tooltip,
   isLoading,
+  disabled,
 }: PromptButtonProps) => {
   if (tooltip) {
     return (
@@ -170,6 +199,7 @@ const PromptButton = ({
           variant="secondary"
           onClick={() => getCompletion(type)}
           isLoading={isLoading}
+          disabled={disabled}
         >
           {button_text}
         </Button>
@@ -184,12 +214,14 @@ const PromptButton = ({
       variant="secondary"
       onClick={() => getCompletion(type)}
       isLoading={isLoading}
+      disabled={disabled}
     >
       {button_text}
     </Button>
   );
 };
 
+// Set the widget injection zone
 export const config: WidgetConfig = {
   zone: "product.details.after",
 };
