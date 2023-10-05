@@ -20,7 +20,8 @@
   </a>
 </p>
 
-https://github.com/VariableVic/medusa-product-ai-widget/assets/42065266/bc5c51ef-83bc-42e3-a698-7bd71988e0ed
+https://github.com/VariableVic/medusa-product-ai-widget/assets/42065266/1ba79467-d178-418a-963d-da17b9ee3506
+
 
 ## Prerequisites
 
