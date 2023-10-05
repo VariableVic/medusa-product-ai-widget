@@ -119,6 +119,7 @@ const ProductAIToolsWidget = ({
   // Reset the chat
   const reset = () => {
     setMessages(messages.filter((m) => m.role !== "assistant"));
+    setNewDescription(null);
   };
 
   // If there is no description, don't render the widget
