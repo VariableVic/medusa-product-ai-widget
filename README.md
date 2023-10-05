@@ -25,11 +25,11 @@ https://github.com/VariableVic/medusa-product-ai-widget/assets/42065266/bc5c51ef
 ## Prerequisites
 
 1. This plugin requires an OpenAI API key and platform account. Go to https://platform.openai.com/account/api-keys to set this up.
-2. You need a Medusa server with the Admin installed. The fastest way to set this up is up is by using [create-medusa-app](https://docs.medusajs.com/create-medusa-app).
+2. You need a Medusa server with the Admin installed. The fastest way to set this up is by using [create-medusa-app](https://docs.medusajs.com/create-medusa-app).
 
 ## Getting Started
 
-1. Install the package with `yarn add medusa-product-ai-widget` or `npm i medusa-product-ai-widget`
+1. Install the package with `yarn add medusa-product-ai-widget` or `npm i medusa-product-ai-widget`.
 2. In `medusa-config.js`, add the plugin to the `plugins` array with the following options:
 
 ```js
