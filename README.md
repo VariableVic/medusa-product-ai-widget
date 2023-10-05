@@ -12,7 +12,7 @@
 </h1>
 
 <p align="center">
-  An admin widget to improve product descriptions with AI. Built with Medusa UI, OpenAI and Vercel AI SDK.
+  A [Medusa](https://medusajs.com/) admin widget to improve product descriptions with AI. Built with [Medusa UI](https://docs.medusajs.com/ui), [OpenAI](https://platform.openai.com/) and [Vercel AI SDK](https://vercel.com/blog/introducing-the-vercel-ai-sdk).
 </p>
 <p align="center">
   <a href="https://twitter.com/intent/follow?screen_name=VariableVic">
