@@ -12,7 +12,7 @@
 </h1>
 
 <p align="center">
-  An admin widget to improve product descriptions with AI.
+  A <a href="https://medusajs.com/">Medusa</a> admin widget to improve product descriptions with AI. Built with <a href="https://docs.medusajs.com/ui">Medusa UI</a>, <a href="https://platform.openai.com/">OpenAI</a> and <a href="https://sdk.vercel.ai/">Vercel AI SDK</a>.
 </p>
 <p align="center">
   <a href="https://twitter.com/intent/follow?screen_name=VariableVic">
@@ -25,11 +25,11 @@ https://github.com/VariableVic/medusa-product-ai-widget/assets/42065266/bc5c51ef
 ## Prerequisites
 
 1. This plugin requires an OpenAI API key and platform account. Go to https://platform.openai.com/account/api-keys to set this up.
-2. You need a Medusa server with the Admin installed. The fastest way to set this up is up is by using [create-medusa-app](https://docs.medusajs.com/create-medusa-app)
+2. You need a Medusa server with the Admin installed. The fastest way to set this up is by using [create-medusa-app](https://docs.medusajs.com/create-medusa-app).
 
 ## Getting Started
 
-1. Install the package with `yarn add medusa-product-ai-widget` or `npm i medusa-product-ai-widget`
+1. Install the package with `yarn add medusa-product-ai-widget` or `npm i medusa-product-ai-widget`.
 2. In `medusa-config.js`, add the plugin to the `plugins` array with the following options:
 
 ```js
@@ -39,13 +39,13 @@ const plugins = [
     resolve: `medusa-product-ai-widget`,
     options: {
       api_key: process.env.OPENAI_API_KEY,
-      enableUI: true,
+      enableUI: true
     }
   }
 ]
 ```
 
-3. In your `.env` file, add a `OPENAI_API_KEY` environment variable containing your API key:
+3. In your `.env` file, add an `OPENAI_API_KEY` environment variable containing your API key:
 
 ```
 OPENAI_API_KEY=<YOUR OPENAI API KEY>
