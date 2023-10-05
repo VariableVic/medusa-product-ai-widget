@@ -1,6 +1,6 @@
 {
   "name": "medusa-product-ai-widget",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "A widget to improve product descriptions with AI",
   "author": "Victor Gerbrands <victor@medusajs.com",
   "license": "MIT",
